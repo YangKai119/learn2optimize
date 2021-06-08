@@ -42,7 +42,7 @@ def gantt_chart(sol):    # 画甘特图
     plt.show()
 
 if __name__ == "__main__":
-    path = 'D:/办公文件/研究生项目/作业调度研究/FJSP-master/JSP_FJSP/data/'
+    path = './data/'
     train_filename = "jsp_20_10_10_train.json"
     eval_filename = "jsp_20_10_10_eval.json"
     train_data = load_dataset(train_filename, path)
