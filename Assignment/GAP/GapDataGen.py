@@ -40,7 +40,7 @@ def main():
 
 if __name__ == "__main__":
     samples = main()
-    path = './GAP_master/data/'
+    path = './data/'
     if not os.path.exists(path):
         os.makedirs(path)
 
