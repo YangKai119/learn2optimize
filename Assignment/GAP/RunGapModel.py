@@ -17,7 +17,7 @@ def obj_plot(fitness):    # 画适应度函数图
     plt.show()
 
 if __name__ == "__main__":
-    path = 'D:/办公文件/研究生项目/指派问题/GAP_master/data/'
+    path = './data/'
     train_filename = "gap_15_10_train.json"
     eval_filename = "gap_15_10_eval.json"
     train_data = load_dataset(train_filename, path)
