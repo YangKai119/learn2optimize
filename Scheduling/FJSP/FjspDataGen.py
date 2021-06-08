@@ -48,7 +48,7 @@ def main():
 
 if __name__ == "__main__":
     samples = main()
-    path = 'D:/办公文件/研究生项目/作业调度研究/FJSP-master/FJSP-master/data/'
+    path = './data/'
     if not os.path.exists(path):
         os.makedirs(path)
 
