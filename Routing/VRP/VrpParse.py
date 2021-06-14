@@ -1,9 +1,6 @@
 
 import numpy as np
 
-
-
-
 class VrpNode(object):
     """
     Class to represent each node for vehicle routing.
