@@ -19,7 +19,6 @@ class Cluster():
         self.cust_num_min = cust_num_min
         
     def get_keys(self,d,value):
-        
         return [k for k, v in d.items() if v == value]
     
     #计算两点间的直线距离
@@ -40,7 +39,6 @@ class Cluster():
         #clustering = KMeans(n_clusters=self.clus_num,random_state=0)
         clustering.fit(self.cust[['LONGITUDE','LATITUDE']])
         self.cust["DIST_AREA_CODE"] = clustering.labels_
-        
         return self.cust
     
     def clus_KMeans(self,data):
@@ -63,7 +61,6 @@ class Cluster():
                     data.loc[new_clu_index,"DIST_AREA_CODE"]=data.loc[new_clu_index,"DIST_AREA_CODE_new"]     #新的索引替代旧的索引
                     data = data.drop("DIST_AREA_CODE_new",axis=1) 
             data['DIST_AREA_CODE']=LabelEncoder().fit_transform(data['DIST_AREA_CODE'])
-        
         return data
     
     def clus_merge(self,data):
@@ -75,7 +72,6 @@ class Cluster():
         clus_custnum_sort = sorted(clus_custnum.items(),key=lambda x:x[1],reverse=False)  
         #约束每类户数不低于cust_min户
         while data["DIST_AREA_CODE"].value_counts().min() < self.cust_num_min:
-            
             for clu in clus_custnum_sort:
                 clu = clu[0]
                 clus_0 = data[data["DIST_AREA_CODE"]==clu]
@@ -120,14 +116,12 @@ class Cluster():
             data['DIST_AREA_CODE']=LabelEncoder().fit_transform(data['DIST_AREA_CODE'])
             
         return data
- 
     
     def fit(self):
         if not self.clus_num:
             data = self.clus_AGNES()
             data = self.clus_KMeans(data)
             data = self.clus_merge(data)
-        
         return data
     
     
