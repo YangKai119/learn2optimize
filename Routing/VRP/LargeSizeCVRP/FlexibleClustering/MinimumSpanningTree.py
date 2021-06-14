@@ -55,25 +55,25 @@ def get_tree_prim(graphMatrix):
  
  
  
-if __name__=='__main__':
-    time1 = time.time()
-    # graphMatrix = [[0, 54, 32, 7, 50, 60], 
-    #                 [54, 0, 21, 58, 76, 69], 
-    #                 [32, 21, 0, 35, 67, 66],
-    #                 [7, 58, 35, 0, 50, 62], 
-    #                 [50, 76, 67, 50, 0, 14], 
-    #                 [60, 69, 66, 62, 14, 0]]
+# if __name__=='__main__':
+#     time1 = time.time()
+#     # graphMatrix = [[0, 54, 32, 7, 50, 60], 
+#     #                 [54, 0, 21, 58, 76, 69], 
+#     #                 [32, 21, 0, 35, 67, 66],
+#     #                 [7, 58, 35, 0, 50, 62], 
+#     #                 [50, 76, 67, 50, 0, 14], 
+#     #                 [60, 69, 66, 62, 14, 0]]
     
-    graphMatrix=random_matrix_genetor(2000)
-    for i in range(len(graphMatrix)):
-        for j in range(len(graphMatrix)):
-            if i==j:
-                graphMatrix[i][j] = 0
+#     graphMatrix=random_matrix_genetor(2000)
+#     for i in range(len(graphMatrix)):
+#         for j in range(len(graphMatrix)):
+#             if i==j:
+#                 graphMatrix[i][j] = 0
                 
-            graphMatrix[i][j] = graphMatrix[j][i]
+#             graphMatrix[i][j] = graphMatrix[j][i]
     
-    print('\r算法运行总时间：',time.time()-time1) 
+#     print('\r算法运行总时间：',time.time()-time1) 
     
-    d = get_tree_prim(graphMatrix)
+#     d = get_tree_prim(graphMatrix)
     
-    print('\r算法运行总时间：',time.time()-time1)  
+#     print('\r算法运行总时间：',time.time()-time1)  
