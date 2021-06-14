@@ -13,14 +13,13 @@ warnings.filterwarnings('ignore')
 
 # 数据处理
 class GetData():
-    
     def __init__(self):
         pass
     
     def Customer(self):
-        ls_cust = pd.read_excel(r'D:\办公文件\研究生项目\路径优化研究\代码\毕设代码\启发式算法求解VRP\data\LS_CUST.xlsx')
+        ls_cust = pd.read_excel('..\data\ls_cust.xlsx')
         # ls_order先取一周（一个订货周期）的数据做测试
-        ls_order = pd.read_excel(r'D:\办公文件\研究生项目\路径优化研究\代码\毕设代码\启发式算法求解VRP\data\LS_ORDER_WEEKS.xlsx')
+        ls_order = pd.read_excel('../data/ls_order_weeks.xlsx')
         data_ord = ls_order[['CUST_LICENCE_CODE','QTY_ORDER_SUM']]
         data_ord['CUST_LICENCE_CODE'] = data_ord['CUST_LICENCE_CODE'].astype('str')
         data_ord_sum = data_ord.groupby(['CUST_LICENCE_CODE'],as_index=False).mean()
@@ -37,7 +36,7 @@ class GetData():
         return cust_df
     
     def Vehicle(self):
-        ls_vehicle = pd.read_excel(r'D:\办公文件\研究生项目\路径优化研究\代码\毕设代码\启发式算法求解VRP\data\LS_VEHICLE.xlsx')
+        ls_vehicle = pd.read_excel('../data/ls_vehicle.xlsx')
         ls_vehicle = ls_vehicle.loc[ls_vehicle['THIRD_PARTY']==0].reset_index(drop=True)
         vehicles_df = ls_vehicle[['DIST_STATION_CODE','VEHICLE_CODE','MAX_LOAD_PACKAGE','MAX_LOAD_CUST']]  #车辆数据取发货点、车牌、最大载重量、最大服务客户数
         vehicles_df['DRIVE_TIME'] = 0
@@ -78,12 +77,10 @@ class Processing():
             return int(self.get_gps_distance(dl_c_gps[x],dl_c_gps[y])*1.8 /1000/60*3600)
     
     def get_matrix(self,cust_df):
-        
         # 发货点
         dl_c_gps = dict(zip(cust_df["CUST_LICENCE_CODE"], cust_df[["LONGITUDE", "LATITUDE"]].values))
         cust_run = cust_df["CUST_LICENCE_CODE"].tolist()
         print("Matrix construction:")
-        
         i = 1
         time1 = time.time()
         distance_matrix = []
@@ -91,21 +88,16 @@ class Processing():
             distance_matrix.append([self.cal_cust_dist(cust,y,dl_c_gps) for y in cust_run])
             sys.stdout.write('\r%s%%'%(int(i/len(cust_run)*100)))
             sys.stdout.flush()
-            i += 1
-            
-        distance_matrix = np.array(distance_matrix)    #需要转换成np.array
-        
+            i += 1     
+        distance_matrix = np.array(distance_matrix)    #需要转换成np.array 
         print("\rTotal run time:{}".format(time.time()-time1))    
         print(distance_matrix)
         
         return distance_matrix    
 
-
 # VRP求解
 class VRP():
-    
     def __init__(self,cust_df,vehicles_df,dist_mat=None):
-        
         self.cust_df = cust_df
         self.cust = cust_df.drop(index=0)
         self.vehicles_df = vehicles_df
@@ -113,20 +105,17 @@ class VRP():
         self.dist_mat = dist_mat
         
     def get_keys(self,d,value):
-        
         return [k for k, v in d.items() if v == value]
     
     def get_cluster(self):
         # 获取聚类结果
-        cust = Cluster(self.cust).fit()
-        
+        cust = Cluster(self.cust).fit()        
         return cust
     
     def get_matrix(self,cust_df):
         # 获取距离矩阵
         pro = Processing()
-        distance_matrix = pro.get_matrix(cust_df)
-        
+        distance_matrix = pro.get_matrix(cust_df)     
         return distance_matrix    
     
     # 单进程
@@ -189,12 +178,6 @@ class VRP():
         cust_data = cust_data.drop_duplicates(subset = ['CUST_LICENCE_CODE'],keep = 'first')
         
         return cust_data,self.vehicles_df
-    
-    #多进程
-    def multi_process(self):
-        pass
-
-    
 
 if __name__ == '__main__':
     time1 = time.time()
