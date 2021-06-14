@@ -67,7 +67,7 @@ def cluster_plot(data,clus_num):   # 还原成numpy或者pandas的结构进行�
     result_df = pd.DataFrame(result, columns=[['CUST_LICENCE_CODE', 'LONGITUDE', 'LATITUDE', 'QTY_ORDER_AVG','DIST_AREA_CODE']])
     result_df.astype({'DIST_AREA_CODE':'int32'})
 
-    result_df.to_excel(r'D:\办公文件\研究生项目\路径优化研究\代码\毕设代码\启发式算法求解VRP\data\result.xlsx',encoding='utf-8')
+    result_df.to_excel('../data/result.xlsx',encoding='utf-8')
     # print(result_df)
     # print(result_df.dtypes)
     # sns.lmplot(result[:,1],result[:,2], hue=result[:,-1], data=result, fit_reg=False)
@@ -76,7 +76,7 @@ def cluster_plot(data,clus_num):   # 还原成numpy或者pandas的结构进行�
     # plt.show()
 
 if __name__ == "__main__":
-    path = r'D:\办公文件\研究生项目\路径优化研究\代码\毕设代码\启发式算法求解VRP\data\ls_cust_pingtan_new.xlsx'
+    path = '../data/ls_cust.xlsx'
     data = read_data(path)
     clus_num = 7
     # clus_parse = ClusParse(data,clus_num)
