@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Jan  4 17:28:12 2021
-
-@author: omgya
-"""
 
 from sklearn.cluster import KMeans
 from sklearn.cluster import AgglomerativeClustering
