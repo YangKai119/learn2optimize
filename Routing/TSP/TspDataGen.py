@@ -22,7 +22,7 @@ def main():
 
 if __name__ == "__main__":
     samples = main()
-    path = 'D:/办公文件/研究生项目/路径优化研究/代码/demo/data/tsp/'
+    path = '../data/tsp/'
     if not os.path.exists(path):
         os.makedirs(path)
 
