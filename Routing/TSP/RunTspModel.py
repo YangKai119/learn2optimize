@@ -2,7 +2,7 @@ import json
 from TspModel import *
 from OptAlgorithm import *
 import matplotlib.pyplot as plt
-from plot.RoutesPlot import *
+from RoutesPlot import *
 import time
 
 def load_dataset(filename, path):
