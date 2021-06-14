@@ -54,7 +54,6 @@ def flex_clustering(data, clus_num):
 
     return manager
 
-
 def cluster_plot(data,clus_num):   # 还原成numpy或者pandas的结构进行画图
     # manager = get_flex_points(data,clus_num)
     manager = flex_clustering(data, clus_num)
