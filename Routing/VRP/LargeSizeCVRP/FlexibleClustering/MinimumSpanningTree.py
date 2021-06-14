@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Jan 11 18:12:31 2021
-
-@author: omgya
-"""
 
 import sys
 import networkx as nx
