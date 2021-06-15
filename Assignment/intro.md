@@ -4,7 +4,7 @@
 
 Gurobi_AP.ipynb -- 建立一个20*20的打车订单分配问题，顾客与司机一一对应进行服务，并调用Gurobi求解器进行求解。
 
-HungarianAlgorithm.py -- 调用scipy库中的方法来求解教学任务指派问题。
+HungarianAlgorithm.py -- 调用scipy库中的匈牙利算法来求解教学任务指派问题。
 
 
 
