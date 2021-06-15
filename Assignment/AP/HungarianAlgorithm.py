@@ -2,7 +2,7 @@
 from scipy.optimize import linear_sum_assignment
 import numpy as np
 
-def printf(row_ind,col_ind):#输出
+def printf(row_ind,col_ind):# 输出
     print("最优教师课程指派:")
     for i in range(len(row_ind)):
         print("教师", row_ind[i], "->课程", col_ind[i], end='; ')
