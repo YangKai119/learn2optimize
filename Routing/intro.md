@@ -27,7 +27,9 @@ LargeSizeCVRP -- 求解大规模CVRP问题的方法
 
 #### 3、Learing4Routing（利用深度强化学习求解路径问题）
 
-TspUntils.py -- 生成Tsp实例数据以及需要使用的运算操作方法。
+data -- 随机生成的训练和测试数据。
+
+TspUntils.py -- 生成Tsp实例数据的方法以及需要使用的运算操作方法。
 
 Network.py -- 建立mask、Attention机制以及pointer network网络。
 
