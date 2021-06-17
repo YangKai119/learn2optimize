@@ -51,14 +51,13 @@ class Attention(nn.Module):
         log_score = masked_log_softmax(u_i, mask, dim=-1)
         return log_score
 
-class PointerNet(nn.Module):
+class PointerNetwork(nn.Module):
     def __init__(self, input_dim, embedding_dim, hidden_size, bidirectional=True, batch_first=True):
-        super(PointerNet, self).__init__()
+        super(PointerNetwork, self).__init__()
         # Embedding dimension
         self.embedding_dim = embedding_dim
         # decoder hidden size
         self.hidden_size = hidden_size
-        # bidirectional encoder
         self.bidirectional = bidirectional
         self.num_directions = 2 if bidirectional else 1
         self.num_layers = 1
