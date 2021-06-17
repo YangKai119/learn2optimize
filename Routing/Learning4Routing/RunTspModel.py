@@ -93,14 +93,13 @@ if __name__ == '__main__':
     optimizer = Adam(model.parameters(), lr=lr, weight_decay=wd)
 
     print("正在加载训练数据集")
-    filename = "data/tsp_5_to_10_100000.pkl"
+    filename = "../data/tsp_train_data.pkl"
     with open(filename, 'rb') as f:
         train_set = pickle.load(f) 
 
     train_loader = DataLoader(dataset=train_set, batch_size=batch_size1, shuffle=True, collate_fn=sparse_seq_collate_fn)
     print("加载训练数据集完成，开始加载测试数据集")
-
-    filename = "data/tsp_5_to_10_10000.pkl"
+    filename = "../data/tsp_test_data.pkl"
     with open(filename, 'rb') as f:
         test_set = pickle.load(f)
     test_loader = DataLoader(dataset=test_set, batch_size=batch_size1, shuffle=False, collate_fn=sparse_seq_collate_fn)
