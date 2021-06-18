@@ -6,7 +6,7 @@ from torch.utils.data.dataloader import DataLoader
 from Network import *
 from TspUntils import *
 
-class AverageMeter:
+class AverageMeter():
     def __init__(self):
         self.val = 0
         self.avg = 0
