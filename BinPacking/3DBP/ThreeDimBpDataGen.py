@@ -26,20 +26,20 @@ def main():
                 length = np.random.randint(40, 50)    # 单位cm
                 width = np.random.randint(20, 30)
                 height = np.random.randint(25, 35)
-                num = np.random.randint(50, 100)
+                num = np.random.randint(30, 50)
             else:                           # 小件物品
                 weight = np.random.randint(1, 4)
                 length = np.random.randint(20, 30)
                 width = np.random.randint(10, 20)
                 height = np.random.randint(15, 25)
-                num = np.random.randint(100, 150)
+                num = np.random.randint(50, 80)
             cur_sample['goods'].append({'weight': weight, 'length': length, 'width': width, 'height': height, 'num': num})
         samples.append(cur_sample)
     return samples
 
 if __name__ == "__main__":
     samples = main()
-    path = 'D:/办公文件/研究生项目/装箱问题/demo/data/3Dbp/'
+    path = '../data/3Dbp/'
     if not os.path.exists(path):
         os.makedirs(path)
 
