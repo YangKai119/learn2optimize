@@ -32,7 +32,7 @@ def main():
 
 if __name__ == "__main__":
     samples = main()
-    path = 'D:/办公文件/研究生项目/装箱问题/demo/data/2Dbp/'
+    path = '../data/2Dbp/'
     if not os.path.exists(path):
         os.makedirs(path)
 
