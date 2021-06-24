@@ -37,7 +37,7 @@ def bin_box_plot(sol):
         show_pic(show_num)   # 这个为直接显示箱体看下效果
 
 if __name__ == "__main__":
-    path = 'D:/办公文件/研究生项目/装箱问题/demo/data/3Dbp/'
+    path = '../data/3Dbp/'
     train_filename = "3dbp_5_300_200_150_train.json"
     eval_filename = "3dbp_5_300_200_150_eval.json"
     train_data = load_dataset(train_filename, path)
