@@ -18,7 +18,7 @@ def obj_plot(fitness):    # 画适应度函数图
     plt.show()
 
 if __name__ == "__main__":
-    path = 'D:/办公文件/研究生项目/背包问题/demo/data/kp/'
+    path = '../data/kp/'
     train_filename = "kp_10_20_train.json"
     eval_filename = "kp_10_20_eval.json"
     train_data = load_dataset(train_filename, path)
