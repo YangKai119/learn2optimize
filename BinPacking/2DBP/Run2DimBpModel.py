@@ -19,7 +19,7 @@ def obj_plot(fitness):    # 画适应度函数图
 
 
 if __name__ == "__main__":
-    path = 'D:/办公文件/研究生项目/装箱问题/demo/data/2Dbp/'
+    path = '../data/2Dbp/'
     train_filename = "2dbp_5_300_200_train.json"
     eval_filename = "2dbp_5_300_200_eval.json"
     train_data = load_dataset(train_filename, path)
