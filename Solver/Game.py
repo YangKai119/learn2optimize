@@ -25,7 +25,7 @@ def main(matrix):
 
 def solve(model):
     print("----Solving----")
-    opt = pye.SolverFactory('glpk', executable='D:/办公文件/编程/数学建模/solver/winglpk-4.65/glpk-4.65/w64/glpsol', name='GAME')
+    opt = pye.SolverFactory('glpk', executable='../solver/winglpk-4.65/glpk-4.65/w64/glpsol', name='GAME')
     results = opt.solve(model,tee=True)
 
     if results.solver.status == pye.SolverStatus.ok and results.solver.termination_condition == pye.TerminationCondition.optimal:
