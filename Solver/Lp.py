@@ -15,7 +15,7 @@ model.origin_A = Constraint(expr=model.x1*4 <= 16)
 model.origin_B = Constraint(expr=model.x2*4 <= 12)
 
 # 直接把地址导过来就OK了
-result = SolverFactory('glpk', executable='D:/办公文件/编程/数学建模/solver/winglpk-4.65/glpk-4.65/w64/glpsol').solve(model)
+result = SolverFactory('glpk', executable='../solver/winglpk-4.65/glpk-4.65/w64/glpsol').solve(model)
 result.write()
 
 print(model.profit())  # 要加括号
