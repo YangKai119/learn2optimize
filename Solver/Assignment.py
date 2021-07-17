@@ -54,7 +54,7 @@ def exp2():
     model.disj = Disjunction(excl_pairs, rule=lambda m,a,b: [sum(model.x[a,j] for j in df.columns) == 0,
                                                              sum(model.x[b,j] for j in df.columns) == 0])
     TransformationFactory('gdp.hull').apply_to(model)
-    opt = pye.SolverFactory('glpk', executable='D:/办公文件/编程/数学建模/solver/winglpk-4.65/glpk-4.65/w64/glpsol', name='TMA')
+    opt = pye.SolverFactory('glpk', executable='../solver/winglpk-4.65/glpk-4.65/w64/glpsol', name='TMA')
     result = opt.solve(model, tee=True)   # 参数tee为打印计算过程
 
     out = pd.DataFrame(0, index=df.index, columns=df.columns)
