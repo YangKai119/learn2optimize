@@ -33,3 +33,7 @@
 8、BinPacking
 
   常见的装箱问题以及改进的求解算法。
+  
+9、Solver
+
+  使用pyomo或者gurobi建模并进行求解。
