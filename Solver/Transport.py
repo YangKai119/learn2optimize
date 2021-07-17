@@ -124,7 +124,7 @@ def exp3():
         model.demand.add(expr=sum(model.x[i, j] for i in supply if i <= j) == v)
 
     # 直接把地址导过来就OK了
-    result = SolverFactory('glpk', executable='D:/办公文件/编程/数学建模/solver/winglpk-4.65/glpk-4.65/w64/glpsol').solve(
+    result = SolverFactory('glpk', executable='../solver/winglpk-4.65/glpk-4.65/w64/glpsol').solve(
         model)
     result.write()
 
