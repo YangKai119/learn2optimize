@@ -1,4 +1,4 @@
-BatchCountOpt.py -- 使用pyomo建模框架解决波多sku渠道分配问题。
+BatchCountOpt.py -- 调用多进程使用pyomo建模框架求解多波次sku渠道分配问题。
 
 Assignment.py -- 使用pyomo建模框架求解指派问题；
 
