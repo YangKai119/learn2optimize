@@ -41,7 +41,6 @@ def get_proc_time(j, df_data, model=None):
     proc_time = (tot_len + 75 * tot_num) / 4500 + tot_stock_tm
     return proc_time
 
-
 # 建立数学模型
 def set_model(df_data):
     model = pyo.ConcreteModel()
@@ -87,21 +86,19 @@ def set_model(df_data):
     # model.pprint()
     return model
 
-
 # 求解器设置
 def cal_obj(model, mtype):
     print("----Solving----")
     if mtype == 'nlp':
-        bonmin_path = 'D:/办公文件/编程/求解器/CoinAll-1.6.0-win64-intel11.1/CoinAll-1.6.0-win64-intel11.1/bin/bonmin.exe'
+        bonmin_path = './CoinAll-1.6.0-win64-intel11.1/CoinAll-1.6.0-win64-intel11.1/bin/bonmin.exe'
         opt = pyo.SolverFactory('bonmin', executable=bonmin_path)  # 求解器的选择
         opt.options['bonmin.time_limit'] = 120  # bonmin求解时间限制，单位秒
     elif mtype == 'lp':
-        glpk_path = 'D:/办公文件/编程/数学建模/solver/winglpk-4.65/glpk-4.65/w64/glpsol.exe'
+        glpk_path = './solver/winglpk-4.65/glpk-4.65/w64/glpsol.exe'
         opt = pyo.SolverFactory('glpk', executable=glpk_path)  # 求解器的选择
         opt.options['tmlim'] = 120  # glpk求解时间限制，单位秒
     results = opt.solve(model, tee=False)
     results.write()
-
 
 # 调用多线程计算
 def get_multi_task(df_wave_data, max_rest_stock, max_line_num, col, proc_col):
@@ -155,12 +152,8 @@ if __name__ == "__main__":
     pool = Pool(10)  # 调用多进程求解
     result = []
     for wave in wave_list:
-        # wave = 'HPW21060300002\t'
         df_wave_data = df_data[df_data['Wave'] == wave].reset_index(drop=True)  # 提取波次数据
         res = pool.apply_async(get_multi_task, (df_wave_data, max_rest_stock, max_line_num, col, proc_col,))
-        # res = get_multi_task(df_wave_data, max_rest_stock, max_line_num, col, proc_col)
-        # print(wave)
-        # print(res.get())
         result.append(res)
     pool.close()
     pool.join()  # 在进程中可以阻塞主进程的执行, 直到等待子线程全部完成之后, 才继续运行主线程后面的代码
