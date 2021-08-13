@@ -36,4 +36,4 @@
   
 9、Solver
 
-  使用pyomo或者gurobi建模并进行求解（其中pyomo主要调用的是glpk求解器进行求解，而gurobi则使用自身的求解器进行求解）。
+  使用pyomo或者gurobi建模并调用求解器进行求解。
