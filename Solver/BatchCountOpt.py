@@ -77,23 +77,14 @@ def set_model(df_data):
 def cal_obj(model, mtype):
     print("----Solving----")
     if mtype == 'nlp':
-        bonmin_path = 'D:/办公文件/编程/求解器/CoinAll-1.6.0-win64-intel11.1/CoinAll-1.6.0-win64-intel11.1/bin/bonmin.exe'
+        bonmin_path = 'D:/CoinAll-1.6.0-win64-intel11.1/CoinAll-1.6.0-win64-intel11.1/bin/bonmin.exe'
         opt = pyo.SolverFactory('bonmin', executable=bonmin_path)  # 求解器的选择
-        # opt.options['bonmin.time_limit'] = 120  # bonmin求解时间限制，单位秒
+        opt.options['bonmin.time_limit'] = 120  # bonmin求解时间限制，单位秒
     elif mtype == 'lp':
-        glpk_path = 'D:/办公文件/编程/数学建模/solver/winglpk-4.65/glpk-4.65/w64/glpsol.exe'
+        glpk_path = 'D:/solver/winglpk-4.65/glpk-4.65/w64/glpsol.exe'
         opt = pyo.SolverFactory('glpk', executable=glpk_path)  # 求解器的选择
-        # opt.options['tmlim'] = 120  # glpk求解时间限制，单位秒
-    elif mtype == 'co':
-        couenne_path = 'D:/办公文件/编程/求解器/CoinAll-1.6.0-win64-intel11.1/CoinAll-1.6.0-win64-intel11.1/bin/couenne.exe'
-        opt = pyo.SolverFactory('couenne', executable=couenne_path)  # 求解器的选择
-    elif mtype == 'ip':
-        ipopt_path = 'D:/办公文件/编程/求解器/CoinAll-1.6.0-win64-intel11.1/CoinAll-1.6.0-win64-intel11.1/bin/ipopt.exe'
-        opt = pyo.SolverFactory('ipopt', executable=ipopt_path)  # 求解器的选择
-    elif mtype == 'cb':
-        cbc_path = 'D:/办公文件/编程/求解器/CoinAll-1.6.0-win64-intel11.1/CoinAll-1.6.0-win64-intel11.1/bin/cbc.exe'
-        opt = pyo.SolverFactory('cbc', executable=cbc_path)  # 求解器的选择
-    results = opt.solve(model, tee=False, timelimit=60)
+        opt.options['tmlim'] = 120  # glpk求解时间限制，单位秒
+    results = opt.solve(model, tee=False)
     results.write()
 
 
@@ -130,7 +121,7 @@ def get_multi_task(df_wave_data, max_rest_stock, max_line_num, col, proc_col):
 
 
 if __name__ == "__main__":
-    df_data = pd.read_excel('./data/tt.xlsx')  # 输入数据
+    df_data = pd.read_excel('./data/test.xlsx')  # 输入数据
     max_rest_stock = df_data['R.No'].max()  # 全局的最大散版数量
     max_line_num = df_data['Line.No'].max()  # 全局的最大管道数
     # 生成结果输出表
