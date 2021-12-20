@@ -11,7 +11,7 @@ def cal_obj(model,alpha,beta):
     # 车辆运输成本
     tot_cost += c1 * sum(model.x[i, j, k] * dist_mat[i][j] for i in range(num_node) for j in range(num_node) for k in
                     range(vehicle_num) if i!=j)
-    # 车辆启动成本，表述有问题，当x都为0时就不太对了
+    # 车辆启动成本
     tot_cost +=  c2 * sum(model.x[0, j, k] for j in range(1,num_node) for k in range(vehicle_num))
     # # 自提柜运输成本
     tot_cost += c3 * sum(
