@@ -6,23 +6,16 @@ import sys
 
 
 def cal_obj(model):
-    c1, c2, c3, c4, mu1, mu2 = 10, 1000, 15, 2000, 1000, 1200
+    c1, c2, mu1 = 10, 1000, 1000
     tot_cost = 0
     # # 车辆运输成本
     tot_cost += c1 * sum(model.x[i, j, k] * dist_mat[i][j] for i in range(num_node) for j in range(num_node) for k in
                     range(vehicle_num) if i!=j)
     # # # 车辆启动成本
     tot_cost +=  c2 * sum(model.x[0, j, k] for j in range(1,num_node-1) for k in range(vehicle_num))
-    # # # 自提柜运输成本
-    # tot_cost += c3 * sum(
-    #     model.z[u, v, m] * parking_dist_mat[u][v] for u in range(1,len(parking_pot)) for v in range(len(parking_pot))
-    #     for m in range(mobile_locker_num))
-    # # # 自提柜的启动成本
-    # tot_cost += c4 * sum(model.z[0, v, m] for v in range(1,len(parking_pot)) for m in range(mobile_locker_num))
     # 车辆等待时间惩罚
     tot_cost += mu1 * sum(model.tw[i, k]  for i in range(1,num_node) for k in range(vehicle_num))
-    # # # 移动自提柜的闲置时间惩罚
-    # tot_cost += mu2 * sum(model.ttw[u, m]  for u in range(1,len(parking_pot)) for m in range(mobile_locker_num))
+
 
     return tot_cost
 
