@@ -12,3 +12,6 @@ SupplyNetworkDesign.py -- 使用gurobi建模框架求解供应链网络设计问
 
 Transport.py -- 使用pyomo建模框架解决运输调度问题。
 
+MLsolver.py -- 使用gurobi求解移动自提柜调度问题
+
+solomon_VRPTW.py -- 使用gurobi求解solomon数据集的VRPTW问题
