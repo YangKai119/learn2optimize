@@ -128,11 +128,11 @@ def setModel():
 def calObjFromSolvers(model, mtype, tmlimit):
     print("----Solving----")
     if mtype == 'bonmin':
-        bonmin_path = 'D:/办公文件/编程/求解器/CoinAll-1.6.0-win64-intel11.1/CoinAll-1.6.0-win64-intel11.1/bin/bonmin.exe'
+        bonmin_path = '../bin/bonmin.exe'
         opt = pyo.SolverFactory('bonmin', executable=bonmin_path)  # 求解器的选择
         opt.options['bonmin.time_limit'] = tmlimit  # bonmin求解时间限制，单位秒
     elif mtype == 'glpk':
-        glpk_path = 'D:/办公文件/编程/数学建模/solver/winglpk-4.65/glpk-4.65/w64/glpsol.exe'
+        glpk_path = '../w64/glpsol.exe'
         opt = pyo.SolverFactory('glpk', executable=glpk_path)  # 求解器的选择
         opt.options['tmlim'] = tmlimit  # glpk求解时间限制，单位秒
     elif mtype == 'grb':
@@ -141,7 +141,7 @@ def calObjFromSolvers(model, mtype, tmlimit):
     elif mtype == "msk":
         opt = pyo.SolverFactory('mosek')
     elif mtype == "ipopt":
-        ipopt_path = 'D:/办公文件/编程/求解器/CoinAll-1.6.0-win64-intel11.1/CoinAll-1.6.0-win64-intel11.1/bin/ipopt.exe'
+        ipopt_path = '../bin/ipopt.exe'
         opt = pyo.SolverFactory('ipopt', executable=ipopt_path)
 
     results = opt.solve(model, tee=True)
@@ -149,7 +149,7 @@ def calObjFromSolvers(model, mtype, tmlimit):
 
 
 if __name__ == "__main__":
-    file_path = "D:/办公文件/科研/数据集/solomon/all/"
+    file_path = "../solomon/all/"
     file_name = ["c101", "c102", "c103", "c104", "c105", "c106", "c107", "c108", "c109",
                  "c201", "c202", "c203", "c204", "c205", "c206", "c207", "c208",
                  "r101", "r102", "r103", "r104", "r105", "r106", "r107", "r108", "r109", "r110", "r111", "r112",
@@ -170,7 +170,7 @@ if __name__ == "__main__":
 
     model = setModel()
     # 保存模型
-    # f = open(r'D:\办公文件\科研\working paper\paper\代码\MobileLocker\model.txt', 'w')
+    # f = open(r'..\MobileLocker\model.txt', 'w')
     # sys.stdout = f
     # model.pprint()
     # f.close()
